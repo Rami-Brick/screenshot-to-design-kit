@@ -1,6 +1,6 @@
 {
   "name": "@rami-brick/screenshot-to-design-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Install the screenshot-to-design-kit Claude Code skill — converts UI screenshots into a reusable React/Tailwind design kit.",
   "type": "module",
   "bin": {
