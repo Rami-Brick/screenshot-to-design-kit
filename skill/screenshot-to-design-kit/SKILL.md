@@ -85,6 +85,7 @@ Use `references/resource-classification.md` when there are multiple screenshots,
 Use `references/user-onboarding.md` when the user asks how to start, how to organize screenshots, or when resources are missing.
 Use `references/fidelity-rubric.md` before implementation and again after the playground render.
 Use `references/single-reference-mode.md` when the user provides only one screenshot and no supporting palette/assets.
+Use `references/prompt-library.md` when the user asks for copy-paste prompts, README usage text, installable package instructions, or guided prompt examples.
 
 Before implementing a substantial kit, skim the relevant case studies:
 
