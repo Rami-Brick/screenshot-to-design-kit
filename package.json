@@ -1,0 +1,31 @@
+{
+  "name": "@rami-brick/screenshot-to-design-kit",
+  "version": "0.1.0",
+  "description": "Install the screenshot-to-design-kit Claude Code skill — converts UI screenshots into a reusable React/Tailwind design kit.",
+  "type": "module",
+  "bin": {
+    "screenshot-to-design-kit": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skill/"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "design-kit",
+    "screenshot",
+    "tailwind",
+    "react"
+  ],
+  "author": "Mohamed Rami Brick",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rami/screenshot-to-design-kit.git"
+  }
+}
