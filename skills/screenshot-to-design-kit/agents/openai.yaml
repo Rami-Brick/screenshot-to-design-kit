@@ -1,4 +1,0 @@
-interface:
-  display_name: "Screenshot to Design Kit"
-  short_description: "Turn UI screenshots into reusable design kits"
-  default_prompt: "Use $screenshot-to-design-kit to create a reusable React and Tailwind design kit from my screenshots."
