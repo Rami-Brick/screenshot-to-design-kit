@@ -1,6 +1,10 @@
-# Prompts
+# Screenshot To Design Kit Prompts
 
-Copy-paste prompts for using the `screenshot-to-design-kit` Claude Code skill.
+Read this file first after installing `@rami-brick/screenshot-to-design-kit`.
+
+This is the human guide. The internal skill files under `.claude/skills/screenshot-to-design-kit/` are for Claude/Codex. You usually do not need to open them.
+
+Use these prompts from your project root, where the skill was installed.
 
 ---
 
@@ -195,3 +199,69 @@ After editing:
 - report changed files
 - tell me exactly what users should put in the README and what prompt they should run first
 ```
+
+---
+
+## 9. After Generation: What Do I Do Next?
+
+Use this after the design kit looks good in the playground.
+
+```
+Use $screenshot-to-design-kit after-generation guidance.
+
+The design kit has been generated and visually reviewed.
+
+Help me choose the best next path:
+1. start a new app from this generated repo
+2. copy/integrate this design kit into an existing app
+3. keep this as a design lab/reference repo
+4. package or share the design kit
+
+Explain the tradeoffs briefly.
+Then give me the exact next steps for the path I choose.
+```
+
+---
+
+## 10. Integrate Generated Kit Into Another Project
+
+Use this when you generated the kit in a clean repo and want to move it into a real app.
+
+```
+Use $screenshot-to-design-kit integration guide.
+
+I have a generated design kit and I want to use it in this existing app.
+
+First inspect:
+- package.json
+- Tailwind/global CSS setup
+- tsconfig/jsconfig aliases
+- route structure
+- current shared UI components
+- the first screen to convert
+
+Then create an integration plan that includes:
+- which generated files/folders to copy
+- which generated files/folders not to copy
+- dependencies to install
+- Tailwind/theme/font/global CSS changes to merge
+- import alias strategy
+- first screen to convert
+- existing behavior that must be preserved
+
+Do not rewrite auth, routing, API calls, stores, schemas, forms, or business logic unless I explicitly ask.
+After I approve the plan, convert one screen at a time.
+```
+
+---
+
+## Recommended Workflow
+
+For most users:
+
+1. Run **Prepare References** if you do not have `references/screenshots/`.
+2. Add one primary screenshot. Add palette/type/component references if available.
+3. Run **Quick Start** or **Multiple References**.
+4. Use **Fix / Correction Loop** until the playground looks good.
+5. Run **After Generation** to choose what to do next.
+6. If you have a separate real app, run **Integrate Generated Kit Into Another Project**.

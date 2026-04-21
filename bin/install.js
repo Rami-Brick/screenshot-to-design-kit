@@ -5,6 +5,7 @@ import path from 'path';
 import os from 'os';
 
 const SKILL_NAME = 'screenshot-to-design-kit';
+const HUMAN_PROMPTS_FILE = 'SCREENSHOT_TO_DESIGN_KIT_PROMPTS.md';
 
 function parseArgs(argv) {
   const args = { force: false, dryRun: false, customPath: null, global: false };
@@ -42,6 +43,7 @@ function main() {
   // Resolve bundled skill source
   const pkgRoot = path.resolve(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'), '..', '..');
   const skillSrc = path.join(pkgRoot, 'skill', SKILL_NAME);
+  const promptsSrc = path.join(pkgRoot, 'PROMPTS.md');
 
   if (!fs.existsSync(skillSrc)) {
     console.error(`Error: bundled skill not found at ${skillSrc}`);
@@ -61,6 +63,7 @@ function main() {
       ? path.join(os.homedir(), '.claude', 'skills')
       : path.join(process.cwd(), '.claude', 'skills');
   const dest = path.join(baseDir, SKILL_NAME);
+  const projectPromptsDest = path.join(process.cwd(), HUMAN_PROMPTS_FILE);
 
   console.log(`\nSkill:       ${SKILL_NAME}`);
   console.log(`Source:      ${skillSrc}`);
@@ -94,7 +97,20 @@ function main() {
   console.log('Copying skill...');
   copyDirSync(skillSrc, dest);
 
+  if (!args.global && !args.customPath && fs.existsSync(promptsSrc)) {
+    if (!fs.existsSync(projectPromptsDest) || args.force) {
+      fs.copyFileSync(promptsSrc, projectPromptsDest);
+      console.log(`Created human prompt guide: ${projectPromptsDest}`);
+    } else {
+      console.log(`Kept existing human prompt guide: ${projectPromptsDest}`);
+    }
+  }
+
   console.log(`\nInstalled successfully to:\n  ${dest}\n`);
+  if (!args.global && !args.customPath) {
+    console.log('Read this first:\n');
+    console.log(`  ${HUMAN_PROMPTS_FILE}\n`);
+  }
   console.log('To use in Claude Code from this project, add this to your project CLAUDE.md:\n');
   console.log(`  Use the skill at .claude/skills/${SKILL_NAME}/SKILL.md\n`);
   console.log('Or reference it directly in a prompt:\n');
