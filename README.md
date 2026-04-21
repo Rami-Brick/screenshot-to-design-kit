@@ -21,7 +21,7 @@ your-project/.claude/skills/screenshot-to-design-kit/
 It also creates a human quick-start guide in your project root:
 
 ```text
-your-project/SCREENSHOT_TO_DESIGN_KIT_PROMPTS.md
+your-project/PROMPTS.md
 ```
 
 Open that file first. It contains the prompts for preparing screenshots, generating the kit, fixing results, visual QA, and integrating the kit into a real app.
@@ -111,7 +111,7 @@ If the folder doesn't exist yet, run the Prepare References prompt below and the
 For package users, the installer creates:
 
 ```text
-SCREENSHOT_TO_DESIGN_KIT_PROMPTS.md
+PROMPTS.md
 ```
 
 Read that file first after installation. In this repository, the source version is [PROMPTS.md](PROMPTS.md).

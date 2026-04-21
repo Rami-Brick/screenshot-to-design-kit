@@ -5,7 +5,7 @@ import path from 'path';
 import os from 'os';
 
 const SKILL_NAME = 'screenshot-to-design-kit';
-const HUMAN_PROMPTS_FILE = 'SCREENSHOT_TO_DESIGN_KIT_PROMPTS.md';
+const HUMAN_PROMPTS_FILE = 'PROMPTS.md';
 
 function parseArgs(argv) {
   const args = { force: false, dryRun: false, customPath: null, global: false };
