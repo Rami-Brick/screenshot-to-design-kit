@@ -19,6 +19,100 @@ DIRS = [
     "plan",
 ]
 
+INTEGRATION_MD = """# Design Kit Integration
+
+Use this guide after the playground looks visually correct.
+
+## Recommended Workflow
+
+For an existing product, the safest path is:
+
+1. Generate and refine the kit in this clean design-lab project.
+2. Copy the reusable kit into the real app.
+3. Merge config, dependencies, fonts, and global CSS.
+4. Convert one real screen at a time.
+
+If this generated repo is meant to become the app, keep `design-kit/` and replace the playground/demo screens gradually with real product screens.
+
+## Copy Into Another App
+
+Copy by default:
+
+```text
+design-kit/
+  tokens/
+  utils/
+  primitives/
+  compounds/
+  index.ts
+```
+
+Usually copy too:
+
+```text
+design-kit/assets/        if used
+design-kit/catalog/       recommended
+design-kit/README.md
+design-kit/CLAUDE.md
+design-kit/INTEGRATION.md
+```
+
+Optional:
+
+```text
+design-kit/examples/
+```
+
+Usually do not copy:
+
+```text
+playground/
+references/
+plan/
+dist/
+node_modules/
+temporary screenshots
+```
+
+## Merge Into The Host App
+
+Check and merge only what is needed:
+
+```text
+package.json
+tailwind.config.ts or tailwind.config.js
+tsconfig.json or jsconfig.json
+global CSS file
+postcss/bundler config if relevant
+```
+
+Common dependencies:
+
+```bash
+npm install clsx tailwind-merge lucide-react
+```
+
+Make sure Tailwind scans the copied kit:
+
+```ts
+content: [
+  \"./src/**/*.{ts,tsx}\",
+  \"./design-kit/**/*.{ts,tsx}\",
+]
+```
+
+## Existing App Prompt
+
+```text
+Use the local design-kit.
+
+Apply this design system to the existing app one screen at a time.
+Preserve routing, data fetching, auth, forms, state, and business logic.
+Only change layout, styling, and component composition unless a structural change is necessary.
+Start by inspecting the target screen and mapping it to kit primitives and compounds.
+```
+"""
+
 FILES = {
     "references/screenshots/PUT_SCREENSHOTS_HERE.txt": "Put primary UI screenshots, palette references, typography references, component details, assets, and mood references here.\n",
     "design-kit/tokens/index.ts": "export const tokens = {} as const;\n",
@@ -28,6 +122,7 @@ FILES = {
     "design-kit/compounds/index.ts": "",
     "design-kit/README.md": "# Design Kit\n\n",
     "design-kit/CLAUDE.md": "# Design Kit Briefing\n\n",
+    "design-kit/INTEGRATION.md": INTEGRATION_MD,
     "plan/design-audit.md": "# Design Audit\n\n",
     "plan/component-plan.md": "# Component Plan\n\n",
 }

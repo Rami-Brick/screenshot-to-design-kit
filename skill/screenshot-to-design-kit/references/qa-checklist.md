@@ -36,7 +36,7 @@ Run this before final handoff.
 - Tokens are used for repeated design decisions.
 - Catalog docs exist for reusable components.
 - Component boundaries are clear.
-- `README.md` and `CLAUDE.md` exist.
+- `README.md`, `CLAUDE.md`, and `INTEGRATION.md` exist.
 
 ## Final Report
 
@@ -49,4 +49,5 @@ Include:
 - supporting reference usage: colors, typography, assets
 - known limitations
 - how to run the playground
-- how to apply the kit to another app
+- the recommended next path: new app, existing app integration, design lab, or package/share
+- how to apply the kit to another app, including exact copy and config-merge guidance when relevant

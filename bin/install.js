@@ -7,10 +7,11 @@ import os from 'os';
 const SKILL_NAME = 'screenshot-to-design-kit';
 
 function parseArgs(argv) {
-  const args = { force: false, dryRun: false, customPath: null };
+  const args = { force: false, dryRun: false, customPath: null, global: false };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--force') args.force = true;
     else if (argv[i] === '--dry-run') args.dryRun = true;
+    else if (argv[i] === '--global') args.global = true;
     else if (argv[i] === '--path' && argv[i + 1]) {
       args.customPath = argv[++i];
     }
@@ -56,12 +57,15 @@ function main() {
   // Resolve destination
   const baseDir = args.customPath
     ? path.resolve(args.customPath)
-    : path.join(os.homedir(), '.claude', 'skills');
+    : args.global
+      ? path.join(os.homedir(), '.claude', 'skills')
+      : path.join(process.cwd(), '.claude', 'skills');
   const dest = path.join(baseDir, SKILL_NAME);
 
   console.log(`\nSkill:       ${SKILL_NAME}`);
   console.log(`Source:      ${skillSrc}`);
   console.log(`Destination: ${dest}`);
+  console.log(`Scope:       ${args.customPath ? 'custom path' : args.global ? 'global user install' : 'project-local install'}`);
   if (args.dryRun) console.log('Mode:        dry-run (no changes will be made)\n');
   else if (args.force) console.log('Mode:        force (existing destination will be replaced)\n');
   else console.log('');
@@ -76,7 +80,7 @@ function main() {
     if (!args.force) {
       console.error(`Error: ${dest} already exists.`);
       console.error(`Run with --force to overwrite:\n`);
-      console.error(`  npx @rami/screenshot-to-design-kit --force`);
+      console.error(`  npx @rami-brick/screenshot-to-design-kit --force`);
       process.exit(1);
     }
     console.log(`Removing existing destination...`);
@@ -91,12 +95,13 @@ function main() {
   copyDirSync(skillSrc, dest);
 
   console.log(`\nInstalled successfully to:\n  ${dest}\n`);
-  console.log('To use in Claude Code, add this to your project CLAUDE.md:\n');
-  console.log(`  Use the skill at ~/.claude/skills/${SKILL_NAME}/SKILL.md\n`);
+  console.log('To use in Claude Code from this project, add this to your project CLAUDE.md:\n');
+  console.log(`  Use the skill at .claude/skills/${SKILL_NAME}/SKILL.md\n`);
   console.log('Or reference it directly in a prompt:\n');
   console.log(`  "Using the screenshot-to-design-kit skill, convert my screenshots into a React/Tailwind design kit."\n`);
   console.log('Place your UI screenshots in:\n');
   console.log('  references/screenshots/\n');
+  console.log('Tip: use --global only if you intentionally want a user-wide install under ~/.claude/skills.\n');
 }
 
 main();

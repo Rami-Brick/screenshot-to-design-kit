@@ -6,17 +6,33 @@ A Claude Code skill that converts UI screenshots, website links, and design refe
 
 ## Install
 
+Run this from the project where you want to use the skill:
+
 ```bash
 npx @rami-brick/screenshot-to-design-kit
 ```
 
-This copies the skill into `~/.claude/skills/screenshot-to-design-kit/`.
+This copies the skill into your current project:
+
+```text
+your-project/.claude/skills/screenshot-to-design-kit/
+```
 
 ### Update / Reinstall
 
 ```bash
 npx @rami-brick/screenshot-to-design-kit --force
 ```
+
+### Global install
+
+Only use this if you intentionally want a user-wide install:
+
+```bash
+npx @rami-brick/screenshot-to-design-kit --global
+```
+
+This copies the skill into `~/.claude/skills/screenshot-to-design-kit/`.
 
 ### Custom install path
 
@@ -54,7 +70,7 @@ The skill builds a **reusable visual system**, not just a screenshot clone. It w
 After installing, reference the skill in your project's `CLAUDE.md`:
 
 ```markdown
-Use the skill at ~/.claude/skills/screenshot-to-design-kit/SKILL.md
+Use the skill at .claude/skills/screenshot-to-design-kit/SKILL.md
 ```
 
 ---
@@ -166,6 +182,7 @@ design-kit/
     primitives/
     compounds/
   CLAUDE.md
+  INTEGRATION.md
   README.md
 ```
 
@@ -182,6 +199,12 @@ node bin/install.js --path /tmp/test-skills --force
 
 # Verify SKILL.md is present
 ls /tmp/test-skills/screenshot-to-design-kit/SKILL.md
+
+# Test project-local default from another folder
+mkdir /tmp/test-project
+cd /tmp/test-project
+node /path/to/rami-skills/bin/install.js --force
+ls .claude/skills/screenshot-to-design-kit/SKILL.md
 ```
 
 ---

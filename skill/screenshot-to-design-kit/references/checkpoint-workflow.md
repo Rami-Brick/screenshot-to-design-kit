@@ -108,7 +108,8 @@ Deliver:
 - fixed obvious overlaps and spacing failures
 - `README.md`
 - `CLAUDE.md` or equivalent AI usage guide
-- final summary of how to use the kit in another app
+- `INTEGRATION.md` with file-copy and config-merge guidance
+- final next-path summary: new app, existing app integration, design lab, or package/share
 
 Gate:
 
@@ -117,6 +118,7 @@ Gate:
 - Visual QA status is reported, including any viewports checked.
 - Functional QA is not described as visual QA.
 - Remaining risks are named plainly.
+- The user is not left guessing how to use the generated kit in a real project.
 
 ## Checkpoint Report Template
 

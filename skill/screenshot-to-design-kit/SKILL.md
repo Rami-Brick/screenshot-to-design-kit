@@ -78,14 +78,16 @@ Follow this checkpoint sequence unless the user explicitly chooses fast auto:
    Build a working example that uses the kit. Do not bypass the kit with large one-off styling except for page-level composition. Stop with screenshots or clear run instructions.
 
 5. **Phase 5: QA And Package**
-   Run build/lint, inspect desktop/mobile if possible, fix obvious layout overlap, and create `CLAUDE.md` plus `README.md` usage guidance. Stop with final handoff.
+   Run build/lint, inspect desktop/mobile if possible, fix obvious layout overlap, and create `CLAUDE.md`, `README.md`, and `INTEGRATION.md` usage guidance. Stop with final handoff and a clear next-path choice.
 
 Use `references/checkpoint-workflow.md` for detailed phase deliverables and gate criteria.
 Use `references/resource-classification.md` when there are multiple screenshots, device screenshots, browser screenshots, mockups, or supporting visual resources.
 Use `references/user-onboarding.md` when the user asks how to start, how to organize screenshots, or when resources are missing.
+Use `references/prompt-library.md` when the user asks for copy-paste prompts, README usage text, installable package instructions, or guided prompt examples.
+Use `references/after-generation.md` after a kit is generated, when the user asks what to do next, or when deciding whether to build in the generated repo, integrate into an existing app, keep a design lab, or package the kit.
+Use `references/integration-guide.md` when copying a generated kit into another project, applying the kit to an existing app, or explaining what files/config are necessary.
 Use `references/fidelity-rubric.md` before implementation and again after the playground render.
 Use `references/single-reference-mode.md` when the user provides only one screenshot and no supporting palette/assets.
-Use `references/prompt-library.md` when the user asks for copy-paste prompts, README usage text, installable package instructions, or guided prompt examples.
 
 Before implementing a substantial kit, skim the relevant case studies:
 
@@ -108,6 +110,7 @@ design-kit/
     primitives/
     compounds/
   CLAUDE.md
+  INTEGRATION.md
   README.md
 ```
 
@@ -115,6 +118,7 @@ Use `references/output-contract.md` for file-level expectations.
 Use `references/qa-checklist.md` before final handoff.
 Use `references/visual-comparison-report.md` to report visual QA.
 Use `references/correction-loop.md` when the user gives post-delivery feedback.
+Use `references/after-generation.md` and `references/integration-guide.md` for final handoff and real-app adoption guidance.
 
 If starting from an empty project, run:
 
@@ -158,6 +162,17 @@ In fast auto mode, continue through all phases, but still produce the same repor
 
 Never mark the project complete if there are obvious text overlaps, clipped buttons, blank renders, missing exports, or a playground that mostly ignores the kit.
 Never mark visual QA complete from server availability alone. If screenshots cannot be captured, say so and ask the user to provide a playground screenshot.
+
+## After Generation
+
+After the kit is generated and visually reviewed, do not leave the user guessing. Ask or infer the next path:
+
+1. Start a new app from this generated repo.
+2. Copy/integrate this design kit into an existing app.
+3. Keep this as a design lab/reference repo.
+4. Package or share the design kit.
+
+Use `references/after-generation.md` for path-specific guidance. If the user chooses integration into another project, use `references/integration-guide.md` and provide exact copy/merge instructions.
 
 ## Applying The Kit To An Existing App
 

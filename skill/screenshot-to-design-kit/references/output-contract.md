@@ -18,6 +18,7 @@ design-kit/
     primitives/
     compounds/
   CLAUDE.md
+  INTEGRATION.md
   README.md
 ```
 
@@ -105,6 +106,20 @@ Each component doc should include:
 - anti-patterns
 - how to apply the kit to an existing app
 
+## Integration Guide
+
+`INTEGRATION.md` should tell humans and future agents:
+
+- recommended workflow: generate in a clean design lab, then integrate into a real app
+- when it is reasonable to build directly in the generated repo
+- what to copy into another app
+- what not to copy into another app
+- dependencies to install
+- Tailwind/theme/font/global CSS setup to merge
+- import alias options
+- how to preserve routing, auth, data fetching, forms, and business logic
+- a screen-by-screen adoption prompt
+
 ## Playground
 
 The example should prove the kit composes:
@@ -121,6 +136,7 @@ The example should prove the kit composes:
 - `tokens` are consumed by components or Tailwind config.
 - `README.md` explains installation and basic usage.
 - `CLAUDE.md` explains how future agents should use the kit.
+- `INTEGRATION.md` explains how to use the kit in a new or existing app.
 - Component docs include "when not to use" or equivalent boundaries.
 - Playground demonstrates the main screenshot pattern with realistic data.
-- The final report tells the user how to apply the kit to another app.
+- The final report asks or answers what the user should do next: start a new app, integrate into an existing app, keep a design lab, or package/share the kit.
